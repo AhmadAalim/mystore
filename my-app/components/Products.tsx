@@ -19,7 +19,7 @@ export default function Products() {
         <div key={p._id} className="p-4 border rounded-xl">
           {p.image && <img src={p.image} className="w-full h-40 object-cover rounded-md" />}
           <h2 className="mt-2 font-semibold">{p.name}</h2>
-          <p className="font-bold text-lg">${p.price}</p>
+          <p className="font-bold text-lg">₪{p.price}</p>
           <button
             onClick={() => addToCart(p)}
             className="mt-3 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"

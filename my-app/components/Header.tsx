@@ -163,7 +163,7 @@ export default function Header() {
                   <div key={index} className="flex items-center justify-between py-2 border-b">
                     <div>
                       <p className="font-semibold">{item.name}</p>
-                      <p className="text-sm text-gray-600">${item.price}</p>
+                      <p className="text-sm text-gray-600">₪{item.price}</p>
                     </div>
                     <button
                       onClick={() => removeFromCart(index)}
@@ -176,7 +176,7 @@ export default function Header() {
                 <div className="mt-4 pt-4 border-t">
                   <div className="flex justify-between font-bold">
                     <span>Total:</span>
-                    <span>${cartItems.reduce((sum, item) => sum + item.price, 0).toFixed(2)}</span>
+                    <span>₪{cartItems.reduce((sum, item) => sum + item.price, 0).toFixed(2)}</span>
                   </div>
                 </div>
               </div>

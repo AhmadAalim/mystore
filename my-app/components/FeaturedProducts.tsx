@@ -64,10 +64,10 @@ export default function FeaturedProducts() {
                 </h3>
                 <div className="flex items-center gap-2">
                   <span className="text-2xl font-bold text-red-600">
-                    ${product.price}
+                    ₪{product.price}
                   </span>
                   <span className="text-gray-400 line-through text-sm">
-                    ${product.originalPrice}
+                    ₪{product.originalPrice}
                   </span>
                 </div>
                 <button 

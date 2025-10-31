@@ -238,7 +238,7 @@ export default function NaamanPage() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-red-600">
-                    ${product.price}
+                    ₪{product.price}
                   </span>
                   <button 
                     onClick={() => addToCart({ _id: product.id.toString(), name: product.name, price: product.price })}
