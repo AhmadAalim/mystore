@@ -72,7 +72,7 @@ export default function Header() {
       <div className="flex-1 flex justify-center items-center gap-8">
         <Link href="/vardinon" className="hover:opacity-70 transition-opacity">
           <Image 
-            src="/vardinon-icon.png" 
+            src="/vardinon.jpeg" 
             alt="Vardinon Brand" 
             width={100} 
             height={100}
