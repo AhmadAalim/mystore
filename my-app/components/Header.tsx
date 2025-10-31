@@ -74,8 +74,8 @@ export default function Header() {
           <Image 
             src="/vardinon.jpeg" 
             alt="Vardinon Brand" 
-            width={80} 
-            height={80}
+            width={150} 
+            height={150}
             className="object-contain"
           />
         </Link>
@@ -83,8 +83,8 @@ export default function Header() {
           <Image 
             src="/naaman-icon.png" 
             alt="Naaman Brand" 
-            width={80} 
-            height={80}
+            width={150} 
+            height={150}
             className="object-contain"
           />
         </Link>
