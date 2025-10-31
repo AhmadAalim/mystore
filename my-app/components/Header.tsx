@@ -3,12 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 
 export default function Header() {
   const [showCart, setShowCart] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
   const { cartItems, removeFromCart } = useCart();
 
   // Auto-close cart after 5 seconds
@@ -36,7 +38,23 @@ export default function Header() {
 
   return (
     <header className="w-full flex justify-between items-center px-8 py-6 bg-white border-b">
-      <div className="flex-1 flex justify-start">
+      <div className="flex-1 flex justify-start items-center gap-2">
+        <button 
+          onClick={() => router.back()} 
+          className="p-2 hover:bg-gray-100 rounded-full"
+          aria-label="Go back"
+        >
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            strokeWidth={2} 
+            stroke="black" 
+            className="w-8 h-8"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+          </svg>
+        </button>
         <Link href="/" className="p-2 hover:bg-gray-100 rounded-full">
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
