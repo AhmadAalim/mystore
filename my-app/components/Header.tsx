@@ -74,18 +74,18 @@ export default function Header() {
           <Image 
             src="/vardinon.jpeg" 
             alt="Vardinon Brand" 
-            width={100} 
-            height={100}
-            className="object-contain border-2 border-gray-300 rounded-lg p-2 bg-gray-50"
+            width={80} 
+            height={80}
+            className="object-contain"
           />
         </Link>
         <Link href="/naaman" className="hover:opacity-70 transition-opacity">
           <Image 
             src="/naaman-icon.png" 
             alt="Naaman Brand" 
-            width={100} 
-            height={100}
-            className="object-contain border-2 border-gray-300 rounded-lg p-2 bg-gray-50"
+            width={80} 
+            height={80}
+            className="object-contain"
           />
         </Link>
       </div>
