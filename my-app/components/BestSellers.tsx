@@ -2,21 +2,23 @@
 
 import { useRef } from "react";
 import { useCart } from "@/context/CartContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 const bestSellers = [
-  { id: 1, name: "Professional Knife Block Set", price: 129.99, image: "🔪", badge: "Bestseller" },
-  { id: 2, name: "Egyptian Cotton Duvet Cover", price: 89.99, image: "🛏️", badge: "Bestseller" },
-  { id: 3, name: "Stainless Steel Cookware Set", price: 149.99, image: "🥘", badge: "Bestseller" },
-  { id: 4, name: "Luxury Bathrobe", price: 79.99, image: "🛁", badge: "Bestseller" },
-  { id: 5, name: "Memory Foam Mattress Pad", price: 199.99, image: "🛌", badge: "Bestseller" },
-  { id: 6, name: "Ceramic Dinnerware Set", price: 119.99, image: "🍽️", badge: "Bestseller" },
-  { id: 7, name: "Organic Cotton Towel Set", price: 69.99, image: "🧺", badge: "Bestseller" },
-  { id: 8, name: "Non-Stick Frying Pan Set", price: 104.99, image: "🍳", badge: "Bestseller" },
+  { id: 1, nameKey: "professionalKnifeBlockSet", price: 129.99, image: "🔪", badge: "bestseller" },
+  { id: 2, nameKey: "egyptianCottonDuvetCover", price: 89.99, image: "🛏️", badge: "bestseller" },
+  { id: 3, nameKey: "stainlessSteelCookwareSet", price: 149.99, image: "🥘", badge: "bestseller" },
+  { id: 4, nameKey: "luxuryBathrobe", price: 79.99, image: "🛁", badge: "bestseller" },
+  { id: 5, nameKey: "memoryFoamMattressPad", price: 199.99, image: "🛌", badge: "bestseller" },
+  { id: 6, nameKey: "ceramicDinnerwareSet", price: 119.99, image: "🍽️", badge: "bestseller" },
+  { id: 7, nameKey: "organicCottonTowelSet", price: 69.99, image: "🧺", badge: "bestseller" },
+  { id: 8, nameKey: "nonStickFryingPanSet", price: 104.99, image: "🍳", badge: "bestseller" },
 ];
 
 export default function BestSellers() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { addToCart } = useCart();
+  const { t } = useLanguage();
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -33,8 +35,8 @@ export default function BestSellers() {
   return (
     <div className="container mx-auto px-4 py-12 bg-gradient-to-b from-gray-50 to-white">
       <div className="mb-8">
-        <h2 className="text-3xl font-bold">Best Sellers</h2>
-        <p className="text-gray-600 mt-2">Our most popular items</p>
+        <h2 className="text-3xl font-bold">{t("bestSellers")}</h2>
+        <p className="text-gray-600 mt-2">{t("mostPopular")}</p>
       </div>
 
       <div className="relative">
@@ -53,12 +55,12 @@ export default function BestSellers() {
                   <div className="text-8xl">{product.image}</div>
                 </div>
                 <div className="absolute top-2 left-2 bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                  ⭐ {product.badge}
+                  ⭐ {t(product.badge)}
                 </div>
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-gray-800 mb-2 line-clamp-2 min-h-[3rem]">
-                  {product.name}
+                  {t(product.nameKey)}
                 </h3>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-2xl font-bold text-gray-900">
@@ -66,10 +68,10 @@ export default function BestSellers() {
                   </span>
                 </div>
                 <button 
-                  onClick={() => addToCart({ _id: product.id.toString(), name: product.name, price: product.price })}
+                  onClick={() => addToCart({ _id: product.id.toString(), name: t(product.nameKey), price: product.price })}
                   className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all font-medium shadow-md hover:shadow-lg"
                 >
-                  Add to Cart
+                  {t("addToCart")}
                 </button>
               </div>
             </div>
@@ -100,4 +102,3 @@ export default function BestSellers() {
     </div>
   );
 }
-

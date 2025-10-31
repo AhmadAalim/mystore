@@ -1,45 +1,49 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-gray-900 text-white mt-20">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold mb-4">About Us</h3>
+            <h3 className="text-xl font-bold mb-4">{t("aboutUs")}</h3>
             <p className="text-gray-400">
-              Your one-stop shop for premium kitchenware, bedding, and home essentials.
+              {t("yourOneStopShop")}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <h3 className="text-xl font-bold mb-4">{t("quickLinks")}</h3>
             <ul className="space-y-2">
               <li>
                 <a href="/" className="text-gray-400 hover:text-white transition-colors">
-                  Home
+                  {t("home")}
                 </a>
               </li>
               <li>
                 <a href="/naaman" className="text-gray-400 hover:text-white transition-colors">
-                  Naaman
+                  {t("naaman")}
                 </a>
               </li>
               <li>
                 <a href="/vardinon" className="text-gray-400 hover:text-white transition-colors">
-                  Vardinon
+                  {t("vardinon")}
                 </a>
               </li>
               <li>
                 <a href="/login" className="text-gray-400 hover:text-white transition-colors">
-                  Login
+                  {t("login")}
                 </a>
               </li>
               <li>
                 <a href="/returns-policy" className="text-gray-400 hover:text-white transition-colors">
-                  Returns Policy
+                  {t("returnsPolicy")}
                 </a>
               </li>
             </ul>
@@ -47,7 +51,7 @@ export default function Footer() {
 
           {/* Contact Section */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Connect With Us</h3>
+            <h3 className="text-xl font-bold mb-4">{t("connectWithUs")}</h3>
             <div className="flex gap-4 mb-4">
               {/* Instagram */}
               <a

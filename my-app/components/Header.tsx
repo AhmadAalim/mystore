@@ -14,7 +14,7 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
   const { cartItems, removeFromCart } = useCart();
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
 
   // Auto-close cart after 5 seconds
   useEffect(() => {
@@ -211,11 +211,11 @@ export default function Header() {
         {showCart && (
           <div className="absolute top-14 right-0 bg-white border shadow-lg rounded-lg w-80 max-h-96 overflow-y-auto z-50">
             <div className="p-4 border-b">
-              <h2 className="text-lg font-bold">Shopping Cart</h2>
+              <h2 className="text-lg font-bold">{t("shoppingCart")}</h2>
             </div>
             {cartItems.length === 0 ? (
               <div className="p-8 text-center text-gray-500">
-                Your cart is empty
+                {t("emptyCart")}
               </div>
             ) : (
               <div className="p-4">
@@ -229,13 +229,13 @@ export default function Header() {
                       onClick={() => removeFromCart(index)}
                       className="text-red-500 hover:text-red-700"
                     >
-                      Remove
+                      {t("remove")}
                     </button>
                   </div>
                 ))}
                 <div className="mt-4 pt-4 border-t">
                   <div className="flex justify-between font-bold">
-                    <span>Total:</span>
+                    <span>{t("total")}:</span>
                     <span>₪{cartItems.reduce((sum, item) => sum + item.price, 0).toFixed(2)}</span>
                   </div>
                 </div>

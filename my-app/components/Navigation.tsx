@@ -2,26 +2,28 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navigation() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   const naamanItems = [
-    "Kitchenware",
-    "Cookware",
-    "Dishes & Plates",
-    "Serving Plates",
-    "Utensils",
-    "Appliances"
+    { key: "kitchenware", label: "kitchenware" },
+    { key: "cookware", label: "cookware" },
+    { key: "dishesPlates", label: "dishesPlates" },
+    { key: "servingPlates", label: "servingPlates" },
+    { key: "utensils", label: "utensils" },
+    { key: "appliances", label: "appliances" },
   ];
 
   const vardinonItems = [
-    "Towels",
-    "Bath Robes",
-    "Bed Sheets",
-    "Bed Covers",
-    "Pillows",
-    "Bathroom Accessories"
+    { key: "towels", label: "towels" },
+    { key: "bathRobes", label: "bathRobes" },
+    { key: "bedSheets", label: "bedSheets" },
+    { key: "bedCovers", label: "bedCovers" },
+    { key: "pillows", label: "pillows" },
+    { key: "bathroomAccessories", label: "bathroomAccessories" },
   ];
 
   return (
@@ -38,7 +40,7 @@ export default function Navigation() {
               href="/naaman" 
               className="text-lg font-semibold text-gray-800 hover:text-red-600 transition-colors"
             >
-              Naaman
+              {t("naaman")}
             </Link>
             
             {activeCategory === "naaman" && (
@@ -46,10 +48,10 @@ export default function Navigation() {
                 {naamanItems.map((item, index) => (
                   <Link
                     key={index}
-                    href={`/naaman/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={`/naaman/${item.key.toLowerCase().replace(/\s+/g, '-')}`}
                     className="block py-2 text-gray-700 hover:text-red-600 transition-colors"
                   >
-                    {item}
+                    {t(item.label)}
                   </Link>
                 ))}
               </div>
@@ -66,7 +68,7 @@ export default function Navigation() {
               href="/vardinon" 
               className="text-lg font-semibold text-gray-800 hover:text-red-600 transition-colors"
             >
-              Vardinon
+              {t("vardinon")}
             </Link>
             
             {activeCategory === "vardinon" && (
@@ -74,10 +76,10 @@ export default function Navigation() {
                 {vardinonItems.map((item, index) => (
                   <Link
                     key={index}
-                    href={`/vardinon/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={`/vardinon/${item.key.toLowerCase().replace(/\s+/g, '-')}`}
                     className="block py-2 text-gray-700 hover:text-red-600 transition-colors"
                   >
-                    {item}
+                    {t(item.label)}
                   </Link>
                 ))}
               </div>
@@ -89,7 +91,7 @@ export default function Navigation() {
             href="/login" 
             className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors py-4"
           >
-            Login
+            {t("login")}
           </Link>
         </div>
       </div>

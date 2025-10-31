@@ -1,17 +1,21 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function AnnouncementBanner() {
+  const { t } = useLanguage();
+
   return (
     <div className="bg-red-600 text-white py-2 overflow-hidden relative w-full">
       <div className="animate-scroll whitespace-nowrap">
         <span className="mx-8 inline-block">
-          🎉 LIMITED TIME OFFER! Get 50% OFF on all products - Use code SALE50 at checkout! 🎉
+          {t("limitedTimeOffer")}
         </span>
         <span className="mx-8 inline-block">
-          🎉 LIMITED TIME OFFER! Get 50% OFF on all products - Use code SALE50 at checkout! 🎉
+          {t("limitedTimeOffer")}
         </span>
         <span className="mx-8 inline-block">
-          🎉 LIMITED TIME OFFER! Get 50% OFF on all products - Use code SALE50 at checkout! 🎉
+          {t("limitedTimeOffer")}
         </span>
       </div>
       
