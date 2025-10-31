@@ -5,13 +5,16 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Header() {
   const [showCart, setShowCart] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
   const { cartItems, removeFromCart } = useCart();
+  const { language, setLanguage } = useLanguage();
 
   // Auto-close cart after 5 seconds
   useEffect(() => {
@@ -91,10 +94,66 @@ export default function Header() {
       </div>
 
       <div className="flex-1 flex justify-end items-center gap-4 relative">
+        {/* Language Switcher */}
+        <div className="relative">
+          <button 
+            onClick={() => {
+              setShowLanguageMenu(!showLanguageMenu);
+              setShowSearch(false);
+              setShowCart(false);
+            }}
+            className="p-2 hover:bg-gray-100 rounded-full"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              strokeWidth={2} 
+              stroke="black" 
+              className="w-8 h-8"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>
+          </button>
+
+          {showLanguageMenu && (
+            <div className="absolute top-12 right-0 bg-white border shadow-lg rounded-lg z-50 min-w-[120px]">
+              <button
+                onClick={() => {
+                  setLanguage("en");
+                  setShowLanguageMenu(false);
+                }}
+                className={`w-full px-4 py-2 text-left hover:bg-gray-100 transition-colors ${language === "en" ? "bg-blue-50 text-blue-600 font-semibold" : ""}`}
+              >
+                🇬🇧 English
+              </button>
+              <button
+                onClick={() => {
+                  setLanguage("ar");
+                  setShowLanguageMenu(false);
+                }}
+                className={`w-full px-4 py-2 text-left hover:bg-gray-100 transition-colors ${language === "ar" ? "bg-blue-50 text-blue-600 font-semibold" : ""}`}
+              >
+                🇸🇦 العربية
+              </button>
+              <button
+                onClick={() => {
+                  setLanguage("he");
+                  setShowLanguageMenu(false);
+                }}
+                className={`w-full px-4 py-2 text-left hover:bg-gray-100 transition-colors rounded-b-lg ${language === "he" ? "bg-blue-50 text-blue-600 font-semibold" : ""}`}
+              >
+                🇮🇱 עברית
+              </button>
+            </div>
+          )}
+        </div>
+
         <button 
           onClick={() => {
             setShowSearch(!showSearch);
             setShowCart(false);
+            setShowLanguageMenu(false);
           }}
           className="p-2 hover:bg-gray-100 rounded-full"
         >
@@ -128,6 +187,7 @@ export default function Header() {
           onClick={() => {
             setShowCart(!showCart);
             setShowSearch(false);
+            setShowLanguageMenu(false);
           }}
           className="relative p-2 hover:bg-gray-100 rounded-full"
         >
